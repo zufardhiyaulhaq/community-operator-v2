@@ -1,0 +1,24 @@
+# permissions for end users to edit twitterhandlers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: twitterhandler-editor-role
+rules:
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers/status
+  verbs:
+  - get

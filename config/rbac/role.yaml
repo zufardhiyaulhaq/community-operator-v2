@@ -1,0 +1,111 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - telegramhandlers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - telegramhandlers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - telegramhandlers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - weeklies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - weeklies/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - weeklies/status
+  verbs:
+  - get
+  - patch
+  - update

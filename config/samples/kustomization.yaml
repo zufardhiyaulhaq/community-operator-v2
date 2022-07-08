@@ -1,0 +1,7 @@
+## Append samples you want in your CSV to this file as resources ##
+resources:
+- community_v1alpha1_weekly.yaml
+- community_v1alpha1_twitterhandler.yaml
+- community_v1alpha1_telegramhandler.yaml
+- community_v1alpha1_community.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

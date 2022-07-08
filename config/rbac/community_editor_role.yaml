@@ -1,0 +1,24 @@
+# permissions for end users to edit communities.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: community-editor-role
+rules:
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities/status
+  verbs:
+  - get

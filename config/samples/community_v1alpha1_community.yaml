@@ -1,0 +1,6 @@
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: Community
+metadata:
+  name: community-sample
+spec:
+  # TODO(user): Add fields here
