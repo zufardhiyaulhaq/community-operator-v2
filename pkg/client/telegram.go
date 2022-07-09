@@ -2,6 +2,7 @@ package client
 
 import (
 	"strconv"
+	"strings"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
@@ -12,6 +13,16 @@ const (
 	Channel TelegramChatType = 0
 	Group                    = 1
 )
+
+var TelegramChatTypeMap = map[string]TelegramChatType{
+	"channel": Channel,
+	"group":   Group,
+}
+
+func ParseTelegramChatType(str string) (TelegramChatType, bool) {
+	c, ok := TelegramChatTypeMap[strings.ToLower(str)]
+	return c, ok
+}
 
 type TelegramClient struct {
 	bot        *tgbotapi.BotAPI
