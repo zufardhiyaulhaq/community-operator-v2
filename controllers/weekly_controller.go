@@ -54,6 +54,11 @@ func (r *WeeklyReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		return ctrl.Result{}, nil
 	}
 
+	if weekly.Status.Status == "send" {
+		log.Info("weekly has been send for all communities, skip reconcile")
+		return ctrl.Result{}, nil
+	}
+
 	weeklyMessage := weekly.Spec.Spec.ToMessageWeekly()
 
 	communities := &communityv1alpha1.CommunityList{}
@@ -92,6 +97,15 @@ func (r *WeeklyReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		}
 
 		for _, telegramHandler := range filteredtelegramHandlers {
+			if _, ok := weekly.Status.Details.Community[community.Name]; ok {
+				if _, ok := weekly.Status.Details.Community[community.Name].Handler.Telegram[telegramHandler.Name]; ok {
+					if weekly.Status.Details.Community[community.Name].Handler.Telegram[telegramHandler.Name].Status == "send" {
+						log.Info(fmt.Sprintf("skip sending weekly on community %s on telegram handler %s", community.Name, telegramHandler.Name))
+						continue
+					}
+				}
+			}
+
 			secret := &corev1.Secret{}
 			err = r.Client.Get(context.TODO(), types.NamespacedName{Name: telegramHandler.Spec.Authentication.Token.Secret.Name, Namespace: req.Namespace}, secret)
 			if err != nil {
@@ -115,10 +129,42 @@ func (r *WeeklyReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 				return ctrl.Result{}, err
 			}
 
+			log.Info(fmt.Sprintf("sending weekly on community %s on telegram handler %s", community.Name, telegramHandler.Name))
+
 			handler := operatorHandler.NewTelegramHandler(client)
 			err = handler.SendMessage(weeklyMessage)
 			if err != nil {
 				return ctrl.Result{}, err
+			}
+
+			if weekly.Status.Details.Community == nil {
+				weekly.Status.Details = communityv1alpha1.WeeklyStatus_Details{
+					Community: map[string]communityv1alpha1.WeeklyStatus_Details_Community{
+						community.Name: {
+							Handler: communityv1alpha1.WeeklyStatus_Details_Community_Handler{
+								Telegram: map[string]communityv1alpha1.WeeklyStatus_Details_Community_Handler_Telegram{
+									telegramHandler.Name: {
+										Status: "send",
+									},
+								},
+							},
+						},
+					},
+				}
+			} else if _, ok := weekly.Status.Details.Community[community.Name]; ok {
+				weekly.Status.Details.Community[community.Name].Handler.Telegram[telegramHandler.Name] = communityv1alpha1.WeeklyStatus_Details_Community_Handler_Telegram{
+					Status: "send",
+				}
+			} else {
+				weekly.Status.Details.Community[community.Name] = communityv1alpha1.WeeklyStatus_Details_Community{
+					Handler: communityv1alpha1.WeeklyStatus_Details_Community_Handler{
+						Telegram: map[string]communityv1alpha1.WeeklyStatus_Details_Community_Handler_Telegram{
+							telegramHandler.Name: {
+								Status: "send",
+							},
+						},
+					},
+				}
 			}
 
 			err = r.Client.Status().Update(context.TODO(), weekly)
@@ -126,6 +172,12 @@ func (r *WeeklyReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 				return ctrl.Result{}, err
 			}
 		}
+	}
+
+	weekly.Status.Status = "send"
+	err = r.Client.Status().Update(context.TODO(), weekly)
+	if err != nil {
+		return ctrl.Result{}, err
 	}
 
 	return ctrl.Result{}, nil

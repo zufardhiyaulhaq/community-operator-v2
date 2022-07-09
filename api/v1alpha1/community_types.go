@@ -22,8 +22,7 @@ import (
 
 // CommunitySpec defines the desired state of Community
 type CommunitySpec struct {
-	Name        string                    `json:"name"`
-	SocialMedia CommunitySpec_SocialMedia `json:"social_media"`
+	SocialMedia CommunitySpec_SocialMedia `json:"socialMedia"`
 }
 
 type CommunitySpec_SocialMedia struct {

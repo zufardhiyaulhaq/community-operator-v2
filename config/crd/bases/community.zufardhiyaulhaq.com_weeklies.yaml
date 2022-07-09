@@ -58,7 +58,7 @@ spec:
                     type: array
                   date:
                     type: string
-                  image_url:
+                  imageUrl:
                     type: string
                   name:
                     type: string
@@ -69,7 +69,7 @@ spec:
                 required:
                 - articles
                 - date
-                - image_url
+                - imageUrl
                 - name
                 - tags
                 type: object
@@ -81,9 +81,36 @@ spec:
             description: WeeklyStatus defines the observed state of Weekly
             properties:
               details:
+                properties:
+                  community:
+                    additionalProperties:
+                      properties:
+                        handler:
+                          properties:
+                            telegram:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
+                          required:
+                          - telegram
+                          type: object
+                      required:
+                      - handler
+                      type: object
+                    type: object
+                required:
+                - community
                 type: object
+              status:
+                type: string
             required:
             - details
+            - status
             type: object
         type: object
     served: true

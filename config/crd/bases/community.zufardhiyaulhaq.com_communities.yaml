@@ -35,9 +35,7 @@ spec:
           spec:
             description: CommunitySpec defines the desired state of Community
             properties:
-              name:
-                type: string
-              social_media:
+              socialMedia:
                 properties:
                   telegram:
                     items:
@@ -52,8 +50,7 @@ spec:
                 - twitter
                 type: object
             required:
-            - name
-            - social_media
+            - socialMedia
             type: object
           status:
             description: CommunityStatus defines the observed state of Community

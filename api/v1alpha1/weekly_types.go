@@ -19,7 +19,6 @@ package v1alpha1
 import (
 	"github.com/zufardhiyaulhaq/community-operator/pkg/message"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
 // WeeklySpec defines the desired state of Weekly
@@ -31,7 +30,7 @@ type WeeklySpec struct {
 type WeeklySpec_Spec struct {
 	Name     string               `json:"name"`
 	Date     string               `json:"date"`
-	ImageUrl string               `json:"image_url"`
+	ImageUrl string               `json:"imageUrl"`
 	Tags     []string             `json:"tags"`
 	Articles []WeeklySpec_Article `json:"articles"`
 }
@@ -69,7 +68,23 @@ func (a WeeklySpec_Article) ToMessageArticle() message.Weekly_Article {
 
 // WeeklyStatus defines the observed state of Weekly
 type WeeklyStatus struct {
-	Details runtime.RawExtension `json:"details"`
+	Status  string               `json:"status"`
+	Details WeeklyStatus_Details `json:"details"`
+}
+
+type WeeklyStatus_Details struct {
+	Community map[string]WeeklyStatus_Details_Community `json:"community"`
+}
+
+type WeeklyStatus_Details_Community struct {
+	Handler WeeklyStatus_Details_Community_Handler `json:"handler"`
+}
+type WeeklyStatus_Details_Community_Handler struct {
+	Telegram map[string]WeeklyStatus_Details_Community_Handler_Telegram `json:"telegram"`
+}
+
+type WeeklyStatus_Details_Community_Handler_Telegram struct {
+	Status string `json:"status"`
 }
 
 //+kubebuilder:object:root=true

@@ -29,7 +29,7 @@ func (weekly Weekly) RenderText(handler HandlerType) (bytes.Buffer, error) {
 		templateFile = WEEKLY_TELEGRAM_TEMPLATE
 	}
 
-	templateEngine, err := template.ParseFiles(templateFile)
+	templateEngine, err := template.New("weekly").Parse(templateFile)
 	if err != nil {
 		return output, err
 	}

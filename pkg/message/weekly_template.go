@@ -8,5 +8,4 @@ const WEEKLY_TELEGRAM_TEMPLATE = `
 {{ end }}
 
 Tags: {{ range .Tags }}#{{ . }} {{ end }}
-*{{ .Community }}*
 `

@@ -1,0 +1,65 @@
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: Community
+metadata:
+  name: community-sample
+  namespace: community-system
+spec:
+  socialMedia:
+    telegram:
+    - telegramhandler-sample
+    twitter: []
+---
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: TelegramHandler
+metadata:
+  name: telegramhandler-sample
+  namespace: community-system
+spec:
+  type: group
+  credential: "-9999999999"
+  authentication:
+    token:
+      secret:
+        name: telegramhandler-secret-sample
+        key: token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: telegramhandler-secret-sample
+  namespace: community-system
+data:
+  token: dG9rb3BlZGlhMjAyMg==
+type: Opaque
+---
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: Weekly
+metadata:
+  name: weekly-sample
+  namespace: community-system
+spec:
+  community:
+  - "community-sample"
+  spec:
+    name: Kube Weekly 270
+    date: 07/31/2021
+    imageUrl: https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png
+    tags:
+    - weekly
+    - kubernetes
+    articles:
+    - title: Building the Telegraf Kubernetes Operator
+      url: https://community.cncf.io/e/mr8gk5
+      type: ICYMI
+    - title: Opstrace, with Sebastien Pahl
+      url: https://kubernetespodcast.com/episode/156-opstrace
+      type: Editorial
+    - title: Craig Box, Kubernetes Podcast from Google
+      url: https://blog.alexellis.io/the-internet-is-my-computer
+      type: Editorial
+    - title: My Prometheus is overwhelmed! Help!
+      url: https://hackernoon.com/my-prometheus-is-overwhelmed-help-qi1937xj
+      type: Technical
+    - title: Verify container image signatures in Kubernetes using Notary or Cosign or both
+      url: https://medium.com/sse-blog/verify-container-image-signatures-in-kubernetes-using-notary-or-cosign-or-both-c25d9e79ec45
+      type: Technical
