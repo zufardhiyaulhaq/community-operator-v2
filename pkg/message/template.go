@@ -9,3 +9,13 @@ const WEEKLY_TELEGRAM_TEMPLATE = `
 
 Tags: {{ range .Tags }}#{{ . }} {{ end }}
 `
+
+const ANNOUNCEMENT_TELEGRAM_TEMPLATE = `
+*{{ .Subject }}*
+
+Hi Everyone!
+
+{{ .Body }}
+
+Tags: {{ range .Tags }}#{{ . }} {{ end }}
+`
