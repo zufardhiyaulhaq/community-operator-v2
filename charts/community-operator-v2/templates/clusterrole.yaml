@@ -33,7 +33,13 @@ rules:
   resources:
   - announcements/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
@@ -51,7 +57,13 @@ rules:
   resources:
   - communities/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
@@ -69,7 +81,13 @@ rules:
   resources:
   - meetups/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
@@ -87,7 +105,13 @@ rules:
   resources:
   - telegramhandlers/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
@@ -105,7 +129,13 @@ rules:
   resources:
   - twitterhandlers/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
@@ -123,7 +153,13 @@ rules:
   resources:
   - weeklies/status
   verbs:
+  - create
+  - delete
   - get
+  - list
+  - patch
+  - update
+  - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole

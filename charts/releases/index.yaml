@@ -3,9 +3,9 @@ entries:
   community-operator-v2:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-07-10T13:18:33.631876+07:00"
+    created: "2022-07-10T13:42:18.367917+07:00"
     description: Manage Community lifecycle via Kubernetes CRDs
-    digest: a1615355909e1fbb2abe5ac4610e6f5fb98bffeee2e214742db4f09b0135ea76
+    digest: 1014a9e5538d25c798e9498b94e22703eb3b68cfbfeb1c00348805ad29e451ce
     home: https://github.com/zufardhiyaulhaq/community-operator-v2
     maintainers:
     - email: zufardhiyaulhaq@gmail.com
@@ -16,4 +16,4 @@ entries:
     urls:
     - community-operator-v2-1.0.0.tgz
     version: 1.0.0
-generated: "2022-07-10T13:18:33.630386+07:00"
+generated: "2022-07-10T13:42:18.366077+07:00"
