@@ -3,10 +3,9 @@ entries:
   community-operator-v2:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-07-10T12:24:10.39235+07:00"
-    description: Expose your service in Kubernetes to the Internet with open source
-      FRP!
-    digest: e0ddc197de55134349004e9b20759981bac7dabd76e60323c4abe8547cde36ad
+    created: "2022-07-10T13:18:33.631876+07:00"
+    description: Manage Community lifecycle via Kubernetes CRDs
+    digest: a1615355909e1fbb2abe5ac4610e6f5fb98bffeee2e214742db4f09b0135ea76
     home: https://github.com/zufardhiyaulhaq/community-operator-v2
     maintainers:
     - email: zufardhiyaulhaq@gmail.com
@@ -17,4 +16,4 @@ entries:
     urls:
     - community-operator-v2-1.0.0.tgz
     version: 1.0.0
-generated: "2022-07-10T12:24:10.390947+07:00"
+generated: "2022-07-10T13:18:33.630386+07:00"

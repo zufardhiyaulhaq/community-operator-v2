@@ -1,6 +1,6 @@
 # community-operator-v2
 
-Expose your service in Kubernetes to the Internet with open source FRP!
+Manage Community lifecycle via Kubernetes CRDs
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square) [![made with Go](https://img.shields.io/badge/made%20with-Go-brightgreen)](http://golang.org) [![Github master branch build](https://img.shields.io/github/workflow/status/zufardhiyaulhaq/community-operator-v2/Master)](https://github.com/zufardhiyaulhaq/community-operator-v2/actions/workflows/master.yml) [![GitHub issues](https://img.shields.io/github/issues/zufardhiyaulhaq/community-operator-v2)](https://github.com/zufardhiyaulhaq/community-operator-v2/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/zufardhiyaulhaq/community-operator-v2)](https://github.com/zufardhiyaulhaq/community-operator-v2/pulls)[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/community-operator-v2)](https://artifacthub.io/packages/search?repo=community-operator-v2)
 

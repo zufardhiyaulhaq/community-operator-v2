@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 name: community-operator-v2
-description: Expose your service in Kubernetes to the Internet with open source FRP!
+description: Manage Community lifecycle via Kubernetes CRDs
 version: 1.0.0
 appVersion: 1.0.0
 type: application
