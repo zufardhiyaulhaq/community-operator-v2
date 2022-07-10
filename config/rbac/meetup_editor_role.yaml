@@ -1,0 +1,24 @@
+# permissions for end users to edit meetups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: meetup-editor-role
+rules:
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups/status
+  verbs:
+  - get

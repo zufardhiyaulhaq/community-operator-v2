@@ -30,7 +30,7 @@ type AnnouncementSpec struct {
 type AnnouncementSpec_Spec struct {
 	Subject  string   `json:"subject"`
 	Body     string   `json:"body"`
-	ImageUrl string   `json:"image"`
+	ImageUrl string   `json:"imageUrl"`
 	Tags     []string `json:"tags"`
 }
 

@@ -7,6 +7,7 @@ resources:
 - bases/community.zufardhiyaulhaq.com_telegramhandlers.yaml
 - bases/community.zufardhiyaulhaq.com_communities.yaml
 - bases/community.zufardhiyaulhaq.com_announcements.yaml
+- bases/community.zufardhiyaulhaq.com_meetups.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:
@@ -17,6 +18,7 @@ patchesStrategicMerge:
 #- patches/webhook_in_telegramhandlers.yaml
 #- patches/webhook_in_communities.yaml
 #- patches/webhook_in_announcements.yaml
+#- patches/webhook_in_meetups.yaml
 #+kubebuilder:scaffold:crdkustomizewebhookpatch
 
 # [CERTMANAGER] To enable cert-manager, uncomment all the sections with [CERTMANAGER] prefix.
@@ -26,6 +28,7 @@ patchesStrategicMerge:
 #- patches/cainjection_in_telegramhandlers.yaml
 #- patches/cainjection_in_communities.yaml
 #- patches/cainjection_in_announcements.yaml
+#- patches/cainjection_in_meetups.yaml
 #+kubebuilder:scaffold:crdkustomizecainjectionpatch
 
 # the following config is for teaching kustomize how to do kustomization for CRDs.

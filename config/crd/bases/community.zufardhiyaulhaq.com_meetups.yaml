@@ -5,20 +5,20 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: announcements.community.zufardhiyaulhaq.com
+  name: meetups.community.zufardhiyaulhaq.com
 spec:
   group: community.zufardhiyaulhaq.com
   names:
-    kind: Announcement
-    listKind: AnnouncementList
-    plural: announcements
-    singular: announcement
+    kind: Meetup
+    listKind: MeetupList
+    plural: meetups
+    singular: meetup
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Announcement is the Schema for the announcements API
+        description: Meetup is the Schema for the meetups API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -33,7 +33,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: AnnouncementSpec defines the desired state of Announcement
+            description: MeetupSpec defines the desired state of Meetup
             properties:
               community:
                 items:
@@ -41,28 +41,72 @@ spec:
                 type: array
               spec:
                 properties:
-                  body:
+                  date:
                     type: string
                   imageUrl:
                     type: string
-                  subject:
+                  name:
                     type: string
+                  place:
+                    type: string
+                  registrationUrl:
+                    type: string
+                  speakers:
+                    items:
+                      properties:
+                        company:
+                          type: string
+                        imageUrl:
+                          type: string
+                        name:
+                          type: string
+                        position:
+                          type: string
+                        title:
+                          type: string
+                      required:
+                      - company
+                      - name
+                      - position
+                      - title
+                      type: object
+                    type: array
+                  sponsors:
+                    items:
+                      properties:
+                        imageUrl:
+                          type: string
+                        name:
+                          type: string
+                        website:
+                          type: string
+                      required:
+                      - name
+                      type: object
+                    type: array
                   tags:
                     items:
                       type: string
                     type: array
+                  time:
+                    type: string
                 required:
-                - body
+                - date
                 - imageUrl
-                - subject
+                - name
+                - place
+                - registrationUrl
+                - speakers
+                - sponsors
                 - tags
+                - time
                 type: object
             required:
             - community
             - spec
             type: object
           status:
-            description: AnnouncementStatus defines the observed state of Announcement
+            description: MeetupStatus defines the observed state of Meetup
             properties:
               details:
                 properties:

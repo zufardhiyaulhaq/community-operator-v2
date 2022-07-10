@@ -1,0 +1,6 @@
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: Meetup
+metadata:
+  name: meetup-sample
+spec:
+  # TODO(user): Add fields here

@@ -1,0 +1,20 @@
+# permissions for end users to view meetups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: meetup-viewer-role
+rules:
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups/status
+  verbs:
+  - get

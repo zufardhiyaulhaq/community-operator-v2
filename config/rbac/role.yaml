@@ -68,6 +68,32 @@ rules:
 - apiGroups:
   - community.zufardhiyaulhaq.com
   resources:
+  - meetups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
   - telegramhandlers
   verbs:
   - create

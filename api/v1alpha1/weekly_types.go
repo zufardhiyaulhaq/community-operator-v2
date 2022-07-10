@@ -45,7 +45,11 @@ func (w WeeklySpec_Spec) ToMessageWeekly() message.Weekly {
 
 	var messageWeeklyArticles []message.Weekly_Article
 	for _, article := range w.Articles {
-		messageWeeklyArticles = append(messageWeeklyArticles, article.ToMessageArticle())
+		messageWeeklyArticles = append(messageWeeklyArticles, message.Weekly_Article{
+			Title: article.Title,
+			Url:   article.Url,
+			Type:  article.Type,
+		})
 	}
 	messageWeekly.Articles = messageWeeklyArticles
 
@@ -56,14 +60,6 @@ type WeeklySpec_Article struct {
 	Title string `json:"title"`
 	Url   string `json:"url"`
 	Type  string `json:"type"`
-}
-
-func (a WeeklySpec_Article) ToMessageArticle() message.Weekly_Article {
-	return message.Weekly_Article{
-		Title: a.Title,
-		Url:   a.Url,
-		Type:  a.Type,
-	}
 }
 
 // WeeklyStatus defines the observed state of Weekly
