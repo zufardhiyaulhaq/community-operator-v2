@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/zufardhiyaulhaq/community-operator/pkg/message"
+	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/message"
 )
 
 type Handler interface {

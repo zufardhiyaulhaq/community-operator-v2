@@ -11,7 +11,7 @@ type TelegramChatType int64
 
 const (
 	Channel TelegramChatType = 0
-	Group                    = 1
+	Group   TelegramChatType = 1
 )
 
 var TelegramChatTypeMap = map[string]TelegramChatType{

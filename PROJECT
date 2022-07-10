@@ -5,7 +5,7 @@ plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: community-operator-v2
-repo: github.com/zufardhiyaulhaq/community-operator
+repo: github.com/zufardhiyaulhaq/community-operator-v2
 resources:
 - api:
     crdVersion: v1
@@ -14,7 +14,7 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: Weekly
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 - api:
     crdVersion: v1
@@ -23,7 +23,7 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: TwitterHandler
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 - api:
     crdVersion: v1
@@ -32,7 +32,7 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: TelegramHandler
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 - api:
     crdVersion: v1
@@ -41,7 +41,7 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: Community
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 - api:
     crdVersion: v1
@@ -50,7 +50,7 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: Announcement
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 - api:
     crdVersion: v1
@@ -59,6 +59,6 @@ resources:
   domain: zufardhiyaulhaq.com
   group: community
   kind: Meetup
-  path: github.com/zufardhiyaulhaq/community-operator/api/v1alpha1
+  path: github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1
   version: v1alpha1
 version: "3"

@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/zufardhiyaulhaq/community-operator/pkg/message"
+	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/message"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

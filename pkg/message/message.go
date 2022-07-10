@@ -6,7 +6,7 @@ type HandlerType int64
 
 const (
 	Telegram HandlerType = 0
-	Twitter              = 1
+	Twitter  HandlerType = 1
 )
 
 type Message interface {

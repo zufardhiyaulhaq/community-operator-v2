@@ -27,10 +27,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator/api/v1alpha1"
-	operatorClient "github.com/zufardhiyaulhaq/community-operator/pkg/client"
-	operatorHandler "github.com/zufardhiyaulhaq/community-operator/pkg/handler"
-	operatorHelper "github.com/zufardhiyaulhaq/community-operator/pkg/helper"
+	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1"
+	operatorClient "github.com/zufardhiyaulhaq/community-operator-v2/pkg/client"
+	operatorHandler "github.com/zufardhiyaulhaq/community-operator-v2/pkg/handler"
+	operatorHelper "github.com/zufardhiyaulhaq/community-operator-v2/pkg/helper"
 )
 
 // MeetupReconciler reconciles a Meetup object

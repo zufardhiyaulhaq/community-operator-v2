@@ -1,0 +1,154 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name }}-manager-role
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}
+    helm.sh/chart: {{ template "community-operator-v2.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - announcements
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - announcements/status
+  verbs:
+  - get
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - communities/status
+  verbs:
+  - get
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - meetups/status
+  verbs:
+  - get
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - telegramhandlers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - telegramhandlers/status
+  verbs:
+  - get
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - twitterhandlers/status
+  verbs:
+  - get
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - weeklies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - community.zufardhiyaulhaq.com
+  resources:
+  - weeklies/status
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name }}-metrics-reader
+rules:
+- nonResourceURLs:
+  - "/metrics"
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name }}-proxy-role
+rules:
+- apiGroups:
+  - authentication.k8s.io
+  resources:
+  - tokenreviews
+  verbs:
+  - create
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - subjectaccessreviews
+  verbs:
+  - create

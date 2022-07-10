@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator/api/v1alpha1"
-	"github.com/zufardhiyaulhaq/community-operator/controllers"
+	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1"
+	"github.com/zufardhiyaulhaq/community-operator-v2/controllers"
 	//+kubebuilder:scaffold:imports
 )
 

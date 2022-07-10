@@ -1,0 +1,589 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: announcements.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: Announcement
+    listKind: AnnouncementList
+    plural: announcements
+    singular: announcement
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Announcement is the Schema for the announcements API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AnnouncementSpec defines the desired state of Announcement
+            properties:
+              community:
+                items:
+                  type: string
+                type: array
+              spec:
+                properties:
+                  body:
+                    type: string
+                  imageUrl:
+                    type: string
+                  subject:
+                    type: string
+                  tags:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - body
+                - imageUrl
+                - subject
+                - tags
+                type: object
+            required:
+            - community
+            - spec
+            type: object
+          status:
+            description: AnnouncementStatus defines the observed state of Announcement
+            properties:
+              details:
+                properties:
+                  community:
+                    additionalProperties:
+                      properties:
+                        handler:
+                          properties:
+                            telegram:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
+                          required:
+                          - telegram
+                          type: object
+                      required:
+                      - handler
+                      type: object
+                    type: object
+                required:
+                - community
+                type: object
+              status:
+                type: string
+            required:
+            - details
+            - status
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: communities.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: Community
+    listKind: CommunityList
+    plural: communities
+    singular: community
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Community is the Schema for the communities API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CommunitySpec defines the desired state of Community
+            properties:
+              socialMedia:
+                properties:
+                  telegram:
+                    items:
+                      type: string
+                    type: array
+                  twitter:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - telegram
+                - twitter
+                type: object
+            required:
+            - socialMedia
+            type: object
+          status:
+            description: CommunityStatus defines the observed state of Community
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: meetups.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: Meetup
+    listKind: MeetupList
+    plural: meetups
+    singular: meetup
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Meetup is the Schema for the meetups API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: MeetupSpec defines the desired state of Meetup
+            properties:
+              community:
+                items:
+                  type: string
+                type: array
+              spec:
+                properties:
+                  date:
+                    type: string
+                  imageUrl:
+                    type: string
+                  name:
+                    type: string
+                  place:
+                    type: string
+                  registrationUrl:
+                    type: string
+                  speakers:
+                    items:
+                      properties:
+                        company:
+                          type: string
+                        imageUrl:
+                          type: string
+                        name:
+                          type: string
+                        position:
+                          type: string
+                        title:
+                          type: string
+                      required:
+                      - company
+                      - name
+                      - position
+                      - title
+                      type: object
+                    type: array
+                  sponsors:
+                    items:
+                      properties:
+                        imageUrl:
+                          type: string
+                        name:
+                          type: string
+                        website:
+                          type: string
+                      required:
+                      - name
+                      type: object
+                    type: array
+                  tags:
+                    items:
+                      type: string
+                    type: array
+                  time:
+                    type: string
+                required:
+                - date
+                - imageUrl
+                - name
+                - place
+                - registrationUrl
+                - speakers
+                - sponsors
+                - tags
+                - time
+                type: object
+            required:
+            - community
+            - spec
+            type: object
+          status:
+            description: MeetupStatus defines the observed state of Meetup
+            properties:
+              details:
+                properties:
+                  community:
+                    additionalProperties:
+                      properties:
+                        handler:
+                          properties:
+                            telegram:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
+                          required:
+                          - telegram
+                          type: object
+                      required:
+                      - handler
+                      type: object
+                    type: object
+                required:
+                - community
+                type: object
+              status:
+                type: string
+            required:
+            - details
+            - status
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: telegramhandlers.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: TelegramHandler
+    listKind: TelegramHandlerList
+    plural: telegramhandlers
+    singular: telegramhandler
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: TelegramHandler is the Schema for the telegramhandlers API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: TelegramHandlerSpec defines the desired state of TelegramHandler
+            properties:
+              authentication:
+                properties:
+                  token:
+                    properties:
+                      secret:
+                        properties:
+                          key:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                        - key
+                        - name
+                        type: object
+                    required:
+                    - secret
+                    type: object
+                required:
+                - token
+                type: object
+              credential:
+                type: string
+              type:
+                enum:
+                - group
+                - channel
+                type: string
+            required:
+            - authentication
+            - credential
+            - type
+            type: object
+          status:
+            description: TelegramHandlerStatus defines the observed state of TelegramHandler
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: twitterhandlers.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: TwitterHandler
+    listKind: TwitterHandlerList
+    plural: twitterhandlers
+    singular: twitterhandler
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: TwitterHandler is the Schema for the twitterhandlers API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: TwitterHandlerSpec defines the desired state of TwitterHandler
+            type: object
+          status:
+            description: TwitterHandlerStatus defines the observed state of TwitterHandler
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: weeklies.community.zufardhiyaulhaq.com
+spec:
+  group: community.zufardhiyaulhaq.com
+  names:
+    kind: Weekly
+    listKind: WeeklyList
+    plural: weeklies
+    singular: weekly
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Weekly is the Schema for the weeklies API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: WeeklySpec defines the desired state of Weekly
+            properties:
+              community:
+                items:
+                  type: string
+                type: array
+              spec:
+                properties:
+                  articles:
+                    items:
+                      properties:
+                        title:
+                          type: string
+                        type:
+                          type: string
+                        url:
+                          type: string
+                      required:
+                      - title
+                      - type
+                      - url
+                      type: object
+                    type: array
+                  date:
+                    type: string
+                  imageUrl:
+                    type: string
+                  name:
+                    type: string
+                  tags:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - articles
+                - date
+                - imageUrl
+                - name
+                - tags
+                type: object
+            required:
+            - community
+            - spec
+            type: object
+          status:
+            description: WeeklyStatus defines the observed state of Weekly
+            properties:
+              details:
+                properties:
+                  community:
+                    additionalProperties:
+                      properties:
+                        handler:
+                          properties:
+                            telegram:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
+                          required:
+                          - telegram
+                          type: object
+                      required:
+                      - handler
+                      type: object
+                    type: object
+                required:
+                - community
+                type: object
+              status:
+                type: string
+            required:
+            - details
+            - status
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

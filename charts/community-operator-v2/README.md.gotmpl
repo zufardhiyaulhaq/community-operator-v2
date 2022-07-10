@@ -1,0 +1,27 @@
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}[![made with Go](https://img.shields.io/badge/made%20with-Go-brightgreen)](http://golang.org) [![Github master branch build](https://img.shields.io/github/workflow/status/zufardhiyaulhaq/community-operator-v2/Master)](https://github.com/zufardhiyaulhaq/community-operator-v2/actions/workflows/master.yml) [![GitHub issues](https://img.shields.io/github/issues/zufardhiyaulhaq/community-operator-v2)](https://github.com/zufardhiyaulhaq/community-operator-v2/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/zufardhiyaulhaq/community-operator-v2)](https://github.com/zufardhiyaulhaq/community-operator-v2/pulls)[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/community-operator-v2)](https://artifacthub.io/packages/search?repo=community-operator-v2)
+
+## Installing
+
+To install the chart with the release name `my-release`:
+
+```console
+helm repo add community-operator-v2 https://zufardhiyaulhaq.com/community-operator-v2/charts/releases/
+helm install my-community-operator-v2 community-operator-v2/community-operator-v2 --values values.yaml
+```
+
+## Usage
+1. Apply some example
+```console
+kubectl apply -f examples/
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+see example files [here](https://github.com/zufardhiyaulhaq/community-operator-v2/blob/master/charts/community-operator-v2/values.yaml)
+
+{{ template "helm-docs.versionFooter" . }}

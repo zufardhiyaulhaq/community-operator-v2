@@ -24,7 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator/api/v1alpha1"
+	communityv1alpha1 "github.com/zufardhiyaulhaq/community-operator-v2/api/v1alpha1"
 )
 
 // TelegramHandlerReconciler reconciles a TelegramHandler object

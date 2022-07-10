@@ -3,8 +3,8 @@ package handler
 import (
 	"time"
 
-	"github.com/zufardhiyaulhaq/community-operator/pkg/client"
-	"github.com/zufardhiyaulhaq/community-operator/pkg/message"
+	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/client"
+	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/message"
 )
 
 type TelegramHandler struct {

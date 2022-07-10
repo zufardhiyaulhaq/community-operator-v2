@@ -225,7 +225,7 @@ endif
 
 # Build a catalog image by adding bundle images to an empty catalog using the operator package manager tool, 'opm'.
 # This recipe invokes 'opm' in 'semver' bundle add mode. For more information on add modes, see:
-# https://github.com/operator-framework/community-operators/blob/7f1438c/docs/packaging-operator.md#updating-your-existing-operator
+# https://github.com/operator-framework/community-operator-v2s/blob/7f1438c/docs/packaging-operator.md#updating-your-existing-operator
 .PHONY: catalog-build
 catalog-build: opm ## Build a catalog image.
 	$(OPM) index add --container-tool docker --mode semver --tag $(CATALOG_IMG) --bundles $(BUNDLE_IMGS) $(FROM_INDEX_OPT)
@@ -234,3 +234,19 @@ catalog-build: opm ## Build a catalog image.
 .PHONY: catalog-push
 catalog-push: ## Push a catalog image.
 	$(MAKE) docker-push IMG=$(CATALOG_IMG)
+
+.PHONY: lint
+lint: 
+	go get github.com/golangci/golangci-lint/cmd/golangci-lint
+	golangci-lint run --verbose --timeout 300s
+
+.PHONY: readme
+readme:
+	GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
+	helm-docs -c ./charts/community-operator-v2 -d > README.md
+	helm-docs -c ./charts/community-operator-v2
+
+.PHONY: helm.create.releases
+helm.create.releases:
+	helm package charts/community-operator-v2 --destination charts/releases
+	helm repo index charts/releases
