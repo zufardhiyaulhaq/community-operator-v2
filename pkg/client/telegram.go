@@ -1,6 +1,7 @@
 package client
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -30,61 +31,73 @@ type TelegramClient struct {
 	credential string
 }
 
-func (client TelegramClient) SendText(text string) error {
-	messageConfig := tgbotapi.MessageConfig{}
+func (client TelegramClient) Send(c Chattable) (Response, error) {
+	if c.Method() == "sendText" {
+		messageConfig := tgbotapi.MessageConfig{}
 
-	if client.chatType == Channel {
-		messageConfig = tgbotapi.NewMessageToChannel(client.credential, text)
-	}
-
-	if client.chatType == Group {
-		chatID, err := strconv.Atoi(client.credential)
-		if err != nil {
-			return err
+		if client.chatType == Channel {
+			messageConfig = tgbotapi.NewMessageToChannel(client.credential, c.Value())
 		}
 
-		messageConfig = tgbotapi.NewMessage(int64(chatID), text)
+		if client.chatType == Group {
+			chatID, err := strconv.Atoi(client.credential)
+			if err != nil {
+				return Response{}, err
+			}
+
+			messageConfig = tgbotapi.NewMessage(int64(chatID), c.Value())
+		}
+
+		messageConfig.ParseMode = "markdown"
+		messageConfig.DisableWebPagePreview = true
+
+		response, err := client.bot.Send(messageConfig)
+		if err != nil {
+			return Response{}, err
+		}
+
+		return Response{
+			Identifier: string(response.MessageID),
+		}, nil
 	}
 
-	messageConfig.ParseMode = "markdown"
-	messageConfig.DisableWebPagePreview = true
+	if c.Method() == "sendImageUrl" {
+		imageConfig := tgbotapi.PhotoConfig{}
 
-	_, err := client.bot.Send(messageConfig)
-	if err != nil {
-		return err
+		if client.chatType == Channel {
+			imageConfig = tgbotapi.PhotoConfig{
+				BaseFile: tgbotapi.BaseFile{
+					BaseChat:    tgbotapi.BaseChat{ChannelUsername: client.credential},
+					FileID:      c.Value(),
+					UseExisting: true,
+				},
+			}
+		}
+
+		if client.chatType == Group {
+			chatID, err := strconv.Atoi(client.credential)
+			if err != nil {
+				return Response{}, err
+			}
+
+			imageConfig = tgbotapi.NewPhotoShare(int64(chatID), c.Value())
+		}
+
+		response, err := client.bot.Send(imageConfig)
+		if err != nil {
+			return Response{}, err
+		}
+
+		return Response{
+			Identifier: string(response.MessageID),
+		}, nil
 	}
 
-	return nil
+	return Response{}, fmt.Errorf("chattable method not found")
 }
 
-func (client TelegramClient) SendImage(imageUrl string) error {
-	imageConfig := tgbotapi.PhotoConfig{}
-
-	if client.chatType == Channel {
-		imageConfig = tgbotapi.PhotoConfig{
-			BaseFile: tgbotapi.BaseFile{
-				BaseChat:    tgbotapi.BaseChat{ChannelUsername: client.credential},
-				FileID:      imageUrl,
-				UseExisting: true,
-			},
-		}
-	}
-
-	if client.chatType == Group {
-		chatID, err := strconv.Atoi(client.credential)
-		if err != nil {
-			return err
-		}
-
-		imageConfig = tgbotapi.NewPhotoShare(int64(chatID), imageUrl)
-	}
-
-	_, err := client.bot.Send(imageConfig)
-	if err != nil {
-		return err
-	}
-
-	return nil
+func (client TelegramClient) Reply(c Chattable, identifier string) (Response, error) {
+	return Response{}, fmt.Errorf("chattable method not found")
 }
 
 func NewTelegramClient(token, credential string, chatType TelegramChatType) (Client, error) {

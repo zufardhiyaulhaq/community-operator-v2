@@ -19,7 +19,9 @@ func (handler TelegramHandler) SendMessage(message message.Message) error {
 			return err
 		}
 
-		err = handler.client.SendText(text.String())
+		_, err = handler.client.Send(client.Text{
+			Text: text.String(),
+		})
 		if err != nil {
 			return err
 		}
@@ -33,7 +35,9 @@ func (handler TelegramHandler) SendMessage(message message.Message) error {
 			return err
 		}
 
-		err = handler.client.SendImage(imageUrl)
+		_, err = handler.client.Send(client.ImageUrl{
+			ImageUrl: imageUrl,
+		})
 		if err != nil {
 			return err
 		}

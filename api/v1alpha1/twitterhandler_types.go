@@ -22,6 +22,30 @@ import (
 
 // TwitterHandlerSpec defines the desired state of TwitterHandler
 type TwitterHandlerSpec struct {
+	Authentication *TwitterHandlerSpec_Authentication `json:"authentication"`
+}
+
+type TwitterHandlerSpec_Authentication struct {
+	ApiKey            *TwitterHandlerSpec_Authentication_ApiKey            `json:"apiKey"`
+	ApiKeySecret      *TwitterHandlerSpec_Authentication_ApiKeySecret      `json:"apiKeySecret"`
+	AccessToken       *TwitterHandlerSpec_Authentication_AccessToken       `json:"accessToken"`
+	AccessTokenSecret *TwitterHandlerSpec_Authentication_AccessTokenSecret `json:"accessTokenSecret"`
+}
+
+type TwitterHandlerSpec_Authentication_ApiKey struct {
+	Secret Secret `json:"secret"`
+}
+
+type TwitterHandlerSpec_Authentication_ApiKeySecret struct {
+	Secret Secret `json:"secret"`
+}
+
+type TwitterHandlerSpec_Authentication_AccessToken struct {
+	Secret Secret `json:"secret"`
+}
+
+type TwitterHandlerSpec_Authentication_AccessTokenSecret struct {
+	Secret Secret `json:"secret"`
 }
 
 // TwitterHandlerStatus defines the observed state of TwitterHandler
