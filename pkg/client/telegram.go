@@ -31,27 +31,29 @@ type TelegramClient struct {
 	credential string
 }
 
-func (client TelegramClient) Send(c Chattable) (Response, error) {
+func (t TelegramClient) Send(c Chattable) (Response, error) {
+	value := c.Value()
+
 	if c.Method() == "sendText" {
 		messageConfig := tgbotapi.MessageConfig{}
 
-		if client.chatType == Channel {
-			messageConfig = tgbotapi.NewMessageToChannel(client.credential, c.Value())
+		if t.chatType == Channel {
+			messageConfig = tgbotapi.NewMessageToChannel(t.credential, value["text"])
 		}
 
-		if client.chatType == Group {
-			chatID, err := strconv.Atoi(client.credential)
+		if t.chatType == Group {
+			chatID, err := strconv.Atoi(t.credential)
 			if err != nil {
 				return Response{}, err
 			}
 
-			messageConfig = tgbotapi.NewMessage(int64(chatID), c.Value())
+			messageConfig = tgbotapi.NewMessage(int64(chatID), value["text"])
 		}
 
 		messageConfig.ParseMode = "markdown"
 		messageConfig.DisableWebPagePreview = true
 
-		response, err := client.bot.Send(messageConfig)
+		response, err := t.bot.Send(messageConfig)
 		if err != nil {
 			return Response{}, err
 		}
@@ -64,26 +66,26 @@ func (client TelegramClient) Send(c Chattable) (Response, error) {
 	if c.Method() == "sendImageUrl" {
 		imageConfig := tgbotapi.PhotoConfig{}
 
-		if client.chatType == Channel {
+		if t.chatType == Channel {
 			imageConfig = tgbotapi.PhotoConfig{
 				BaseFile: tgbotapi.BaseFile{
-					BaseChat:    tgbotapi.BaseChat{ChannelUsername: client.credential},
-					FileID:      c.Value(),
+					BaseChat:    tgbotapi.BaseChat{ChannelUsername: t.credential},
+					FileID:      value["imageUrl"],
 					UseExisting: true,
 				},
 			}
 		}
 
-		if client.chatType == Group {
-			chatID, err := strconv.Atoi(client.credential)
+		if t.chatType == Group {
+			chatID, err := strconv.Atoi(t.credential)
 			if err != nil {
 				return Response{}, err
 			}
 
-			imageConfig = tgbotapi.NewPhotoShare(int64(chatID), c.Value())
+			imageConfig = tgbotapi.NewPhotoShare(int64(chatID), value["imageUrl"])
 		}
 
-		response, err := client.bot.Send(imageConfig)
+		response, err := t.bot.Send(imageConfig)
 		if err != nil {
 			return Response{}, err
 		}

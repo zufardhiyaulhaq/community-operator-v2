@@ -2,20 +2,64 @@ package client
 
 import (
 	"fmt"
+	"io/ioutil"
+	"net/http"
 
-	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/drswork/go-twitter/twitter"
 )
 
 type TwitterClient struct {
 	client *twitter.Client
 }
 
-func (client TwitterClient) Send(c Chattable) (Response, error) {
+func (t TwitterClient) Send(c Chattable) (Response, error) {
+	value := c.Value()
+
+	if c.Method() == "sendText" {
+		tweet, _, err := t.client.Statuses.Update(value["text"], nil)
+		if err != nil {
+			return Response{}, err
+		}
+
+		return Response{
+			Identifier: tweet.IDStr,
+		}, nil
+	}
+
+	if c.Method() == "sendTextAndImageUrl" || c.Method() == "sendImageUrl" {
+		response, err := http.Get(value["imageUrl"])
+		if err != nil {
+			return Response{}, err
+		}
+
+		defer response.Body.Close()
+		contents, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			return Response{}, err
+		}
+
+		media, _, err := t.client.Media.Upload(contents, "tweet_image")
+		if err != nil {
+			return Response{}, err
+		}
+
+		tweet, _, err := t.client.Statuses.Update(value["text"], &twitter.StatusUpdateParams{
+			MediaIds: []int64{media.MediaID},
+		})
+		if err != nil {
+			return Response{}, err
+		}
+
+		return Response{
+			Identifier: tweet.IDStr,
+		}, nil
+	}
+
 	return Response{}, fmt.Errorf("chattable method not found")
 }
 
-func (client TwitterClient) Reply(c Chattable, identifier string) (Response, error) {
+func (t TwitterClient) Reply(c Chattable, identifier string) (Response, error) {
 	return Response{}, fmt.Errorf("chattable method not found")
 }
 

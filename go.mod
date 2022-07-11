@@ -3,8 +3,8 @@ module github.com/zufardhiyaulhaq/community-operator-v2
 go 1.17
 
 require (
-	github.com/dghubble/go-twitter v0.0.0-20220706021256-cdf1c5ea4e19
 	github.com/dghubble/oauth1 v0.7.1
+	github.com/drswork/go-twitter v0.0.0-20220710160938-983ef38dcd50
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.18.1
