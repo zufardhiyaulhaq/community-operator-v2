@@ -59,7 +59,7 @@ func (t TelegramClient) Send(c Chattable) (Response, error) {
 		}
 
 		return Response{
-			Identifier: string(response.MessageID),
+			Identifier: fmt.Sprint(response.MessageID),
 		}, nil
 	}
 
@@ -91,7 +91,7 @@ func (t TelegramClient) Send(c Chattable) (Response, error) {
 		}
 
 		return Response{
-			Identifier: string(response.MessageID),
+			Identifier: fmt.Sprint(response.MessageID),
 		}, nil
 	}
 

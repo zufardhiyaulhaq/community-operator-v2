@@ -246,6 +246,10 @@ readme:
 	helm-docs -c ./charts/community-operator-v2 -d > README.md
 	helm-docs -c ./charts/community-operator-v2
 
+.PHONY: helm.build.crds
+helm.build.crds:
+	find ./config/crd/bases/*.yaml | xargs -I{} sh -c "cat {}" > ./charts/community-operator-v2/crds/crds.yaml
+
 .PHONY: helm.create.releases
 helm.create.releases:
 	helm package charts/community-operator-v2 --destination charts/releases

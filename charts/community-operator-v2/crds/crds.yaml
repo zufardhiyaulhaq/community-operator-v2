@@ -80,8 +80,18 @@ spec:
                                 - status
                                 type: object
                               type: object
+                            twitter:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
                           required:
                           - telegram
+                          - twitter
                           type: object
                       required:
                       - handler
@@ -301,8 +311,18 @@ spec:
                                 - status
                                 type: object
                               type: object
+                            twitter:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
                           required:
                           - telegram
+                          - twitter
                           type: object
                       required:
                       - handler
@@ -447,6 +467,77 @@ spec:
             type: object
           spec:
             description: TwitterHandlerSpec defines the desired state of TwitterHandler
+            properties:
+              authentication:
+                properties:
+                  accessToken:
+                    properties:
+                      secret:
+                        properties:
+                          key:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                        - key
+                        - name
+                        type: object
+                    required:
+                    - secret
+                    type: object
+                  accessTokenSecret:
+                    properties:
+                      secret:
+                        properties:
+                          key:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                        - key
+                        - name
+                        type: object
+                    required:
+                    - secret
+                    type: object
+                  apiKey:
+                    properties:
+                      secret:
+                        properties:
+                          key:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                        - key
+                        - name
+                        type: object
+                    required:
+                    - secret
+                    type: object
+                  apiKeySecret:
+                    properties:
+                      secret:
+                        properties:
+                          key:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                        - key
+                        - name
+                        type: object
+                    required:
+                    - secret
+                    type: object
+                required:
+                - accessToken
+                - accessTokenSecret
+                - apiKey
+                - apiKeySecret
+                type: object
+            required:
+            - authentication
             type: object
           status:
             description: TwitterHandlerStatus defines the observed state of TwitterHandler
@@ -560,8 +651,18 @@ spec:
                                 - status
                                 type: object
                               type: object
+                            twitter:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
                           required:
                           - telegram
+                          - twitter
                           type: object
                       required:
                       - handler

@@ -1,6 +1,8 @@
 package message
 
-import "bytes"
+import (
+	"bytes"
+)
 
 type HandlerType int64
 

@@ -77,9 +77,14 @@ type WeeklyStatus_Details_Community struct {
 }
 type WeeklyStatus_Details_Community_Handler struct {
 	Telegram map[string]WeeklyStatus_Details_Community_Handler_Telegram `json:"telegram"`
+	Twitter  map[string]WeeklyStatus_Details_Community_Handler_Twitter  `json:"twitter"`
 }
 
 type WeeklyStatus_Details_Community_Handler_Telegram struct {
+	Status string `json:"status"`
+}
+
+type WeeklyStatus_Details_Community_Handler_Twitter struct {
 	Status string `json:"status"`
 }
 

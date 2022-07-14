@@ -107,9 +107,14 @@ type MeetupStatus_Details_Community struct {
 }
 type MeetupStatus_Details_Community_Handler struct {
 	Telegram map[string]MeetupStatus_Details_Community_Handler_Telegram `json:"telegram"`
+	Twitter  map[string]MeetupStatus_Details_Community_Handler_Twitter  `json:"twitter"`
 }
 
 type MeetupStatus_Details_Community_Handler_Telegram struct {
+	Status string `json:"status"`
+}
+
+type MeetupStatus_Details_Community_Handler_Twitter struct {
 	Status string `json:"status"`
 }
 

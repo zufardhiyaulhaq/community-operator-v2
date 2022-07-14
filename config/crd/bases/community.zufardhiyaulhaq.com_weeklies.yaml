@@ -96,8 +96,18 @@ spec:
                                 - status
                                 type: object
                               type: object
+                            twitter:
+                              additionalProperties:
+                                properties:
+                                  status:
+                                    type: string
+                                required:
+                                - status
+                                type: object
+                              type: object
                           required:
                           - telegram
+                          - twitter
                           type: object
                       required:
                       - handler

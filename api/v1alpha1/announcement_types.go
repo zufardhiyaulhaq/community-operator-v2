@@ -58,9 +58,14 @@ type AnnouncementStatus_Details_Community struct {
 }
 type AnnouncementStatus_Details_Community_Handler struct {
 	Telegram map[string]AnnouncementStatus_Details_Community_Handler_Telegram `json:"telegram"`
+	Twitter  map[string]AnnouncementStatus_Details_Community_Handler_Twitter  `json:"twitter"`
 }
 
 type AnnouncementStatus_Details_Community_Handler_Telegram struct {
+	Status string `json:"status"`
+}
+
+type AnnouncementStatus_Details_Community_Handler_Twitter struct {
 	Status string `json:"status"`
 }
 
