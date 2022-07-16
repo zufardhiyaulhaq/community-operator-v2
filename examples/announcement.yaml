@@ -1,36 +1,3 @@
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: Community
-metadata:
-  name: community-sample
-  namespace: community-system
-spec:
-  socialMedia:
-    telegram:
-    - telegramhandler-sample
-    twitter: []
----
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: TelegramHandler
-metadata:
-  name: telegramhandler-sample
-  namespace: community-system
-spec:
-  type: group
-  credential: "-9999999999"
-  authentication:
-    token:
-      secret:
-        name: telegramhandler-secret-sample
-        key: token
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: telegramhandler-secret-sample
-  namespace: community-system
-data:
-  token: dG9rb3BlZGlhMjAyMg==
-type: Opaque
 ---
 apiVersion: community.zufardhiyaulhaq.com/v1alpha1
 kind: Announcement
@@ -41,17 +8,20 @@ spec:
   community:
   - "community-sample"
   spec:
-    subject: Call for Proposals Kubernetes Community Days 2021!
+    subject: Testing from community-operator-v2
     body: >-
-      Kubernetes Community Days Indonesia 2021 is an event bringing together the Cloud Native Community to learn, build networks, collaborate, and share about various Cloud Native projects. We invite you to share ideas and the work that you’ve been doing! more information at https://www.kubernetesdays.id. Get free swag if you are accepted!
+      This is testing announcement CRDs from community-operator-v2 https://github.com/zufardhiyaulhaq/community-operator-v2, please ignore!
 
-      
-      Kubernetes Community Days Indonesia 2021 mempertemukan komunitas untuk belajar, membangun koneksi, berkolaborasi dan berbagi tentang banyak Cloud Native projects. Kami mengundang Anda untuk menjadi penyaji dan berbagi hal-hal seputar pekerjaan, ide, proyek mandiri yang Anda lakukan. Informasi lebih lanjut kunjungi https://www.kubernetesdays.id dan dapatkan eksklusif swag jika penyajian Anda diterima! Semoga beruntung.
-    imageUrl: https://raw.githubusercontent.com/cloudnative-id/kubernetes-community-days/master/artwork/cfp/KCD2021-CFPv1.png
+
+      Call for Proposals KubernetesCommunityDays and OpenInfraDays Indonesia 2022
+
+
+      The #KubernetesCommunityDays and #OpenInfraDays Indonesia 2022 CFP is open NOW through August 22! We cant wait to hear your amazing ideas and hope to see you in Jakarta! 
+
+
+      Learn more: https://cfp.kubernetesdays.id
+    imageUrl: https://raw.githubusercontent.com/cloudnative-id/kubernetes-community-days/master/2022/cfp/cfp1.png
     tags: 
-      - announcement
       - KubernetesCommunityDays
-      - cncf
-      - golang
+      - OpenInfraDays
       - CFP
-

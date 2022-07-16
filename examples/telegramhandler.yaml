@@ -1,0 +1,23 @@
+---
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: TelegramHandler
+metadata:
+  name: telegramhandler-sample
+  namespace: community-system
+spec:
+  type: group
+  credential: "-9999999999"
+  authentication:
+    token:
+      secret:
+        name: telegramhandler-secret-sample
+        key: token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: telegramhandler-secret-sample
+  namespace: community-system
+data:
+  token: redacted
+type: Opaque

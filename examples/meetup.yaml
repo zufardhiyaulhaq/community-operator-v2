@@ -1,38 +1,4 @@
 apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: Community
-metadata:
-  name: community-sample
-  namespace: community-system
-spec:
-  socialMedia:
-    telegram:
-    - telegramhandler-sample
-    twitter: []
----
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: TelegramHandler
-metadata:
-  name: telegramhandler-sample
-  namespace: community-system
-spec:
-  type: group
-  credential: "-9999999999"
-  authentication:
-    token:
-      secret:
-        name: telegramhandler-secret-sample
-        key: token
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: telegramhandler-secret-sample
-  namespace: community-system
-data:
-  token: dG9rb3BlZGlhMjAyMg==
-type: Opaque
----
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
 kind: Meetup
 metadata:
   name: meetup-sample
@@ -40,27 +6,24 @@ metadata:
 spec:
   community:
   - "community-sample"
-  - "community-sample-1"
   spec:
-      name: "Kubernetes Cloud Native Online Meetup February 2022"
-      date: "February 24, 2022"
-      time: "19.00"
-      place: "Online"
-      registrationUrl: "online.kubernetescommunity.id"
-      sponsors:
-      - name: CNCF
-      - name: Test
-      imageUrl: "https://raw.githubusercontent.com/cloudnative-id/artwork/master/poster/online/24-Feb-2022.png"
-      tags:
-        - meetup
-        - CNCF
-      speakers:
-      - name: "Srinivasa Vasu"
-        position: "Solution Engineer"
-        company: "Yugabyte"
-        title: "Distributed Services on Kubernetes - Is it a boon or curse?"
-      - name: "Akbar I"
-        position: "Senior Site Reliability Engineer"
-        company: "PT Fliptech Lentera Inspirasi Pertiwi"
-        title: "kpt for Kubernetes"
-
+    name: "Testing Meetup CRD from community-operator-v2"
+    date: "September 2, 2021"
+    time: "19.00"
+    place: "Online"
+    registrationUrl: "https://github.com/zufardhiyaulhaq/community-operator-v2"
+    imageUrl: "https://raw.githubusercontent.com/cloudnative-id/artwork/master/poster/online/2-September-2021.png"
+    tags:
+      - meetup
+      - CNCF
+    sponsors:
+    - name: "Cloud Native Computing Foundation"
+    speakers:
+      - name: "Bachril Qirom"
+        position: "DevOps Engineer"
+        company: "Tokopedia"
+        title: "High Available and Unlimited Retention Prometheus using Thanos"
+      - name: "Zufar Dhiyaulhaq"
+        position: "Cloud Platform Engineer"
+        company: "Gojek"
+        title: "Istio Multicluster for Zero Downtime Migration"

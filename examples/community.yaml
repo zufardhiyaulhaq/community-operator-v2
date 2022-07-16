@@ -1,0 +1,12 @@
+---
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: Community
+metadata:
+  name: community-sample
+  namespace: community-system
+spec:
+  socialMedia:
+    telegram:
+    - telegramhandler-sample
+    twitter:
+    - twitterhandler-sample

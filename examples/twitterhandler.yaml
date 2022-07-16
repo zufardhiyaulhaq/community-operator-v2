@@ -1,0 +1,36 @@
+---
+apiVersion: community.zufardhiyaulhaq.com/v1alpha1
+kind: TwitterHandler
+metadata:
+  name: twitterhandler-sample
+  namespace: community-system
+spec:
+  authentication:
+    apiKey:
+      secret:
+        name: twitterhandler-secret-sample
+        key: apiKey
+    apiKeySecret:
+      secret:
+        name: twitterhandler-secret-sample
+        key: apiKeySecret
+    accessToken:
+      secret:
+        name: twitterhandler-secret-sample
+        key: accessToken
+    accessTokenSecret:
+      secret:
+        name: twitterhandler-secret-sample
+        key: accessTokenSecret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: twitterhandler-secret-sample
+  namespace: community-system
+data:
+  apiKey: redacted
+  apiKeySecret: redacted
+  accessToken: redacted
+  accessTokenSecret: redacted
+type: Opaque

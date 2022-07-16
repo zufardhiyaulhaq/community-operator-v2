@@ -1,38 +1,4 @@
 apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: Community
-metadata:
-  name: community-sample
-  namespace: community-system
-spec:
-  socialMedia:
-    telegram:
-    - telegramhandler-sample
-    twitter: []
----
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
-kind: TelegramHandler
-metadata:
-  name: telegramhandler-sample
-  namespace: community-system
-spec:
-  type: group
-  credential: "-9999999999"
-  authentication:
-    token:
-      secret:
-        name: telegramhandler-secret-sample
-        key: token
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: telegramhandler-secret-sample
-  namespace: community-system
-data:
-  token: dG9rb3BlZGlhMjAyMg==
-type: Opaque
----
-apiVersion: community.zufardhiyaulhaq.com/v1alpha1
 kind: Weekly
 metadata:
   name: weekly-sample
@@ -41,25 +7,34 @@ spec:
   community:
   - "community-sample"
   spec:
-    name: Kube Weekly 270
-    date: 07/31/2021
+    name: "Testing Weekly CRD from community-operator-v2, please Ignore"
+    date: 04/30/2022
     imageUrl: https://raw.githubusercontent.com/cncf/artwork/master/other/cncf/horizontal/color/cncf-color.png
     tags:
     - weekly
     - kubernetes
     articles:
-    - title: Building the Telegraf Kubernetes Operator
-      url: https://community.cncf.io/e/mr8gk5
+    - title: Let your developer easily connect, secure,and enforce policy for your MicroService
+      url: https://community.cncf.io/e/m93jwt/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
       type: ICYMI
-    - title: Opstrace, with Sebastien Pahl
-      url: https://kubernetespodcast.com/episode/156-opstrace
+    - title: Low-ops Kubernetes storage with MicroK8s and OpenEBS
+      url: https://community.cncf.io/e/m8rb6a/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
+      type: ICYMI
+    - title: SSH bastions break your zero trust model
+      url: https://blogs.appaegis.com/ssh-bastions-break-your-zero-trust-model?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
       type: Editorial
-    - title: Craig Box, Kubernetes Podcast from Google
-      url: https://blog.alexellis.io/the-internet-is-my-computer
+    - title: Certified Kubernetes Security Specialist (CKS) 2022 exam guide
+      url: https://kubesimplify.com/certified-kubernetes-security-specialist-cks-2022-exam-guide?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
       type: Editorial
-    - title: My Prometheus is overwhelmed! Help!
-      url: https://hackernoon.com/my-prometheus-is-overwhelmed-help-qi1937xj
+    - title: The Go programming language and environment
+      url: https://cacm.acm.org/magazines/2022/5/260357-the-go-programming-language-and-environment/fulltext?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
       type: Technical
-    - title: Verify container image signatures in Kubernetes using Notary or Cosign or both
-      url: https://medium.com/sse-blog/verify-container-image-signatures-in-kubernetes-using-notary-or-cosign-or-both-c25d9e79ec45
+    - title: Hunting down an intermittent failure in Cilium
+      url: https://superorbital.io/journal/hunting-intermittent-cilium-error/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
+      type: Technical
+    - title: 'Busting vcluster myths: What is a virtual cluster?'
+      url: https://elastisys.com/busting-vcluster-myths-what-is-a-virtual-cluster/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
+      type: Technical
+    - title: SocketCAN x Kubernetes
+      url: https://www.collabora.com/news-and-blog/news-and-events/socketcan-x-kubernetes.html?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9Ca6et-kkBBAfLEO5dFuPbUhzZiFtb53E7jefuQWJG4QO33vXMjdCdsRah2Z5IA3WKrD-W
       type: Technical
