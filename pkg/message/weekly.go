@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"html/template"
 	"net/url"
+
+	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/helper"
 )
 
 type Weekly_Article struct {
@@ -23,6 +25,14 @@ type Weekly struct {
 func (weekly Weekly) RenderText(handler HandlerType) (bytes.Buffer, error) {
 	var templateFile string
 	var output bytes.Buffer
+
+	for index, article := range weekly.Articles {
+		stripUrl, err := helper.StripUrlQuery(article.Url)
+		if err != nil {
+			return output, err
+		}
+		weekly.Articles[index].Url = stripUrl
+	}
 
 	switch handler {
 	case Telegram:

@@ -41,7 +41,7 @@ const WEEKLY_TWITTER_TEMPLATE = `
 {{ .Name }}
 {{ .Date }}
 
-{{ range .Articles }}• [{{ .Type }}] [{{ .Title }}]({{ .Url }})
+{{ range .Articles }}• [{{ .Type }}] {{ .Title }}: {{ .Url }}
 {{ end }}
 
 Tags: {{ range .Tags }}#{{ . }} {{ end }}
@@ -58,13 +58,13 @@ Tags: {{ range .Tags }}#{{ . }} {{ end }}
 `
 
 const MEETUP_TWITTER_TEMPLATE = `
-*{{ .Name }}*
+{{ .Name }}
 
 Hi Everyone!
 
 Let's gather again at our meetup sponsored by {{ range .Sponsors }}{{ .Name }}, {{ end }}!
 
-Our Speaker:
+Our Speakers:
 {{ range .Speakers }}•  {{ .Name }}, {{ .Position }} @ {{ .Company }} sharing with us on "{{ .Title }}"
 {{ end }}
 
