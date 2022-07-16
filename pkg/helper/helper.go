@@ -18,7 +18,7 @@ func StripUrlQuery(sourceUrl string) (string, error) {
 	}
 
 	query := stripUrl.Query()
-	for key, _ := range query {
+	for key := range query {
 		query.Del(key)
 	}
 
