@@ -2,6 +2,7 @@ package handler
 
 import (
 	"strings"
+	"time"
 
 	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/client"
 	"github.com/zufardhiyaulhaq/community-operator-v2/pkg/message"
@@ -22,7 +23,7 @@ func (handler TwitterHandler) SendMessage(message message.Message) error {
 	var response client.Response
 
 	for index, text := range texts {
-		if index == 1 {
+		if index == 0 {
 			var chattable client.Chattable
 
 			if message.SendImage() {
@@ -46,6 +47,7 @@ func (handler TwitterHandler) SendMessage(message message.Message) error {
 				return err
 			}
 
+			time.Sleep(15 * time.Second)
 			continue
 		}
 
@@ -53,6 +55,8 @@ func (handler TwitterHandler) SendMessage(message message.Message) error {
 		if err != nil {
 			return err
 		}
+
+		time.Sleep(15 * time.Second)
 	}
 
 	return nil

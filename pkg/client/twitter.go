@@ -53,7 +53,7 @@ func (t TwitterClient) Send(c Chattable) (Response, error) {
 		}
 
 		return Response{
-			Identifier: tweet.IDStr,
+			Identifier: fmt.Sprint(tweet.ID),
 		}, nil
 	}
 

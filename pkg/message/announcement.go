@@ -20,6 +20,8 @@ func (Announcement Announcement) RenderText(handler HandlerType) (bytes.Buffer, 
 	switch handler {
 	case Telegram:
 		templateFile = ANNOUNCEMENT_TELEGRAM_TEMPLATE
+	case Twitter:
+		templateFile = ANNOUNCEMENT_TWITTER_TEMPLATE
 	}
 
 	templateEngine, err := template.New("Announcement").Parse(templateFile)

@@ -27,6 +27,8 @@ func (weekly Weekly) RenderText(handler HandlerType) (bytes.Buffer, error) {
 	switch handler {
 	case Telegram:
 		templateFile = WEEKLY_TELEGRAM_TEMPLATE
+	case Twitter:
+		templateFile = WEEKLY_TWITTER_TEMPLATE
 	}
 
 	templateEngine, err := template.New("weekly").Parse(templateFile)

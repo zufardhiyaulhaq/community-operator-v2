@@ -39,6 +39,8 @@ func (Meetup Meetup) RenderText(handler HandlerType) (bytes.Buffer, error) {
 	switch handler {
 	case Telegram:
 		templateFile = MEETUP_TELEGRAM_TEMPLATE
+	case Twitter:
+		templateFile = MEETUP_TWITTER_TEMPLATE
 	}
 
 	templateEngine, err := template.New("Meetup").Parse(templateFile)
