@@ -30,7 +30,7 @@ type WeeklySpec struct {
 type WeeklySpec_Spec struct {
 	Name     string               `json:"name"`
 	Date     string               `json:"date"`
-	ImageUrl string               `json:"imageUrl"`
+	ImageUrl string               `json:"imageUrl",yaml:"imageUrl"`
 	Tags     []string             `json:"tags"`
 	Articles []WeeklySpec_Article `json:"articles"`
 }
