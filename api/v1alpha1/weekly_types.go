@@ -23,16 +23,16 @@ import (
 
 // WeeklySpec defines the desired state of Weekly
 type WeeklySpec struct {
-	Community []string        `json:"community"`
-	Spec      WeeklySpec_Spec `json:"spec"`
+	Community []string        `json:"community" yaml:"community"`
+	Spec      WeeklySpec_Spec `json:"spec" yaml:"spec"`
 }
 
 type WeeklySpec_Spec struct {
-	Name     string               `json:"name"`
-	Date     string               `json:"date"`
-	ImageUrl string               `json:"imageUrl",yaml:"imageUrl"`
-	Tags     []string             `json:"tags"`
-	Articles []WeeklySpec_Article `json:"articles"`
+	Name     string               `json:"name" yaml:"name"`
+	Date     string               `json:"date" yaml:"date"`
+	ImageUrl string               `json:"imageUrl" yaml:"imageUrl"`
+	Tags     []string             `json:"tags" yaml:"tags"`
+	Articles []WeeklySpec_Article `json:"articles" yaml:"articles"`
 }
 
 func (w WeeklySpec_Spec) ToMessageWeekly() message.Weekly {
@@ -57,35 +57,35 @@ func (w WeeklySpec_Spec) ToMessageWeekly() message.Weekly {
 }
 
 type WeeklySpec_Article struct {
-	Title string `json:"title"`
-	Url   string `json:"url"`
-	Type  string `json:"type"`
+	Title string `json:"title" yaml:"title"`
+	Url   string `json:"url" yaml:"url"`
+	Type  string `json:"type" yaml:"type"`
 }
 
 // WeeklyStatus defines the observed state of Weekly
 type WeeklyStatus struct {
-	Status  string               `json:"status"`
-	Details WeeklyStatus_Details `json:"details"`
+	Status  string               `json:"status" yaml:"status"`
+	Details WeeklyStatus_Details `json:"details" yaml:"details"`
 }
 
 type WeeklyStatus_Details struct {
-	Community map[string]WeeklyStatus_Details_Community `json:"community"`
+	Community map[string]WeeklyStatus_Details_Community `json:"community" yaml:"community"`
 }
 
 type WeeklyStatus_Details_Community struct {
-	Handler WeeklyStatus_Details_Community_Handler `json:"handler"`
+	Handler WeeklyStatus_Details_Community_Handler `json:"handler" yaml:"handler"`
 }
 type WeeklyStatus_Details_Community_Handler struct {
-	Telegram map[string]WeeklyStatus_Details_Community_Handler_Telegram `json:"telegram"`
-	Twitter  map[string]WeeklyStatus_Details_Community_Handler_Twitter  `json:"twitter"`
+	Telegram map[string]WeeklyStatus_Details_Community_Handler_Telegram `json:"telegram" yaml:"telegram"`
+	Twitter  map[string]WeeklyStatus_Details_Community_Handler_Twitter  `json:"twitter" yaml:"twitter"`
 }
 
 type WeeklyStatus_Details_Community_Handler_Telegram struct {
-	Status string `json:"status"`
+	Status string `json:"status" yaml:"status"`
 }
 
 type WeeklyStatus_Details_Community_Handler_Twitter struct {
-	Status string `json:"status"`
+	Status string `json:"status" yaml:"status"`
 }
 
 //+kubebuilder:object:root=true
@@ -93,11 +93,11 @@ type WeeklyStatus_Details_Community_Handler_Twitter struct {
 
 // Weekly is the Schema for the weeklies API
 type Weekly struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta   `json:",inline" yaml:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty" yaml:"metadata,omitempty"`
 
-	Spec   WeeklySpec   `json:"spec,omitempty"`
-	Status WeeklyStatus `json:"status,omitempty"`
+	Spec   WeeklySpec   `json:"spec,omitempty" yaml:"spec,omitempty"`
+	Status WeeklyStatus `json:"status,omitempty" yaml:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
