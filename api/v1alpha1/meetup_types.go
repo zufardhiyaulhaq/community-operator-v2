@@ -32,8 +32,8 @@ type MeetupSpec_Spec struct {
 	Date            string                    `json:"date"`
 	Time            string                    `json:"time"`
 	Place           string                    `json:"place"`
-	RegistrationUrl string                    `json:"registrationUrl"`
-	ImageUrl        string                    `json:"imageUrl"`
+	RegistrationUrl string                    `json:"registrationUrl" yaml:"registrationUrl"`
+	ImageUrl        string                    `json:"imageUrl" yaml:"imageUrl"`
 	Tags            []string                  `json:"tags"`
 	Sponsors        []MeetupSpec_Spec_Sponsor `json:"sponsors"`
 	Speakers        []MeetupSpec_Spec_Speaker `json:"speakers"`
@@ -81,13 +81,13 @@ type MeetupSpec_Spec_Speaker struct {
 	Company  string `json:"company"`
 	Title    string `json:"title"`
 	// +optional
-	ImageUrl *string `json:"imageUrl"`
+	ImageUrl *string `json:"imageUrl" yaml:"imageUrl"`
 }
 
 type MeetupSpec_Spec_Sponsor struct {
 	Name string `json:"name"`
 	// +optional
-	ImageUrl *string `json:"imageUrl"`
+	ImageUrl *string `json:"imageUrl" yaml:"imageUrl"`
 	// +optional
 	Website *string `json:"website"`
 }

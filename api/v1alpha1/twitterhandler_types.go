@@ -26,10 +26,10 @@ type TwitterHandlerSpec struct {
 }
 
 type TwitterHandlerSpec_Authentication struct {
-	ApiKey            *TwitterHandlerSpec_Authentication_ApiKey            `json:"apiKey"`
-	ApiKeySecret      *TwitterHandlerSpec_Authentication_ApiKeySecret      `json:"apiKeySecret"`
-	AccessToken       *TwitterHandlerSpec_Authentication_AccessToken       `json:"accessToken"`
-	AccessTokenSecret *TwitterHandlerSpec_Authentication_AccessTokenSecret `json:"accessTokenSecret"`
+	ApiKey            *TwitterHandlerSpec_Authentication_ApiKey            `json:"apiKey" yaml:"apiKey"`
+	ApiKeySecret      *TwitterHandlerSpec_Authentication_ApiKeySecret      `json:"apiKeySecret" yaml:"apiKeySecret"`
+	AccessToken       *TwitterHandlerSpec_Authentication_AccessToken       `json:"accessToken" yaml:"accessToken"`
+	AccessTokenSecret *TwitterHandlerSpec_Authentication_AccessTokenSecret `json:"accessTokenSecret" yaml:"accessTokenSecret"`
 }
 
 type TwitterHandlerSpec_Authentication_ApiKey struct {
